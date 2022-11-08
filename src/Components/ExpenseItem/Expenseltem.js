@@ -1,5 +1,5 @@
 import './ExpenseItem.css';
-import ExpenseDate from './ExpenseDate';
+import ExpenseDate from '../ExpenseDate/ExpenseDate';
 // a react component is just a js function
 const ExpenseItem = ({ date, title, amount }) => {
   return (
