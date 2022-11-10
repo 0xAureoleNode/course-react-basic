@@ -5,6 +5,21 @@ const ExpenseForm = () => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
+  // one state management
+  // const [userInput, setUserInput] = useState({enteredTitle: '', enteredAmount: '', enteredDate: ''})
+  /*
+        const titleChangeHandle = (e) => {
+            setUserInput({...userInput, enteredTitle: event.target.value});
+        };
+
+        const amountChangeHandle = (e) => {
+            setUserInput({...userInput, enteredAmount: event.target.value});
+        };
+
+        const dateChangeHandle = (e) => {
+            setUserInput({...userInput, enteredDate: event.target.value});
+        };
+  */
 
   const titleChangeHandle = (e) => {
     setEnteredTitle(e.target.value);
