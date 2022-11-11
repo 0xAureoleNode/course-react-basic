@@ -9,15 +9,15 @@ const ExpenseItem = ({ date, title, amount }) => {
     setItemTitle('updated!');
   };
   return (
-    // only have one root element
-    <Card className="expense-item">
-      <ExpenseDate date={date} />
-      <div className="expense-item__description">
-        <h2>{itemTitle}</h2>
-        <div className="expense-item__price">${amount}</div>
-      </div>
-      <button onClick={clickHandler}>Change Title</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={date} />
+        <div className="expense-item__description">
+          <h2>{itemTitle}</h2>
+          <div className="expense-item__price">${amount}</div>
+        </div>
+      </Card>
+    </li>
   );
 };
 
