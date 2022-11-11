@@ -3,8 +3,9 @@ import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
 import './Expenses.css';
 import Card from '../Card/Card';
 import { useState } from 'react';
+import { Fragment } from 'react';
 const Expenses = ({ expenses }) => {
-  const [selectOption, setSelectOption] = useState('2020');
+  const [selectOptions, setSelectOption] = useState('2020');
 
   const filterChangeHandler = (selectedYear) => {
     setSelectOption(selectedYear);
@@ -14,17 +15,21 @@ const Expenses = ({ expenses }) => {
       <Card className="expenses">
         <ExpensesFilter
           onChangeFilter={filterChangeHandler}
-          value={selectOption}
+          value={selectOptions}
         />
-        {expenses.map((expense) => (
-          <div key={expense.id}>
-            <ExpenseItem
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          </div>
-        ))}
+        {expenses
+          .filter(
+            (expense) => expense.date.getFullYear().toString() === selectOptions
+          )
+          .map((expense) => (
+            <Fragment key={expense.id}>
+              <ExpenseItem
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+              />
+            </Fragment>
+          ))}
       </Card>
     </div>
   );
