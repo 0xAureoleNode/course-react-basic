@@ -10,6 +10,10 @@ const Expenses = ({ expenses }) => {
   const filterChangeHandler = (selectedYear) => {
     setSelectOption(selectedYear);
   };
+  const filteredExpenses = expenses.filter(
+    (expense) => expense.date.getFullYear().toString() === selectOptions
+  );
+
   return (
     <div>
       <Card className="expenses">
@@ -17,11 +21,10 @@ const Expenses = ({ expenses }) => {
           onChangeFilter={filterChangeHandler}
           value={selectOptions}
         />
-        {expenses
-          .filter(
-            (expense) => expense.date.getFullYear().toString() === selectOptions
-          )
-          .map((expense) => (
+        {filteredExpenses.length === 0 ? (
+          <p>No Expenses Found.</p>
+        ) : (
+          filteredExpenses.map((expense) => (
             <Fragment key={expense.id}>
               <ExpenseItem
                 title={expense.title}
@@ -29,7 +32,8 @@ const Expenses = ({ expenses }) => {
                 date={expense.date}
               />
             </Fragment>
-          ))}
+          ))
+        )}
       </Card>
     </div>
   );
