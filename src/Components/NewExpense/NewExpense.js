@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NewExpense.css';
 import ExpenseForm from '../ExpenseForm/ExpenseForm';
 const NewExpense = ({ onAddExpense }) => {
@@ -8,10 +8,25 @@ const NewExpense = ({ onAddExpense }) => {
       id: Math.random().toString(),
     };
     onAddExpense(expenseData);
+    setToggleButton(!toggleButton);
+  };
+
+  const [toggleButton, setToggleButton] = useState(true);
+  const buttonSwitchCheck = () => {
+    setToggleButton(!toggleButton);
   };
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {toggleButton === true ? (
+        <button type="button" onClick={buttonSwitchCheck}>
+          Add New Expense
+        </button>
+      ) : (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onClickButton={buttonSwitchCheck}
+        />
+      )}
     </div>
   );
 };
