@@ -3,7 +3,14 @@ import ChartBar from '../ChartBar/ChartBar';
 const Chart = () => {
   return (
     <div className="chart">
-      <ChartBar />
+      {dataPoints.map((dataPoint) => (
+        <ChartBar
+          key={dataPoint.label}
+          value={dataPoint.value}
+          maxValue={null}
+          label={dataPoint.label}
+        />
+      ))}
     </div>
   );
 };
